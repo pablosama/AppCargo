@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="AppCargo.AppCargo" android:versionCode="1" android:versionName="1.0">
   <uses-sdk android:minSdkVersion="16" />
-  <application android:label="AppCargo"></application>
+  <application android:label="AppCargo">
+
+    <!-- Add new Activity class name here -->
+    <activity android:name=".LoginUser"></activity>
+  </application>
+  
 </manifest>
