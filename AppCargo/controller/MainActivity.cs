@@ -114,7 +114,10 @@ namespace AppCargo
                         AuthService.SaveCredentials(user, pass);
                         Intent nextScreen = new Intent(this, typeof(LoginUserActivity));
                         nextScreen.PutExtra("userName", txtUserName.Text);
-                        StartActivity(nextScreen);
+                        //here put the type of user, default value is 1
+                        var typeOfUser = 1;
+                        nextScreen.PutExtra("TypeOfUser", typeOfUser);
+                            StartActivity(nextScreen);
                         });
                     })).Start();
                 }

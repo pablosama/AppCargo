@@ -25,15 +25,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnLUAModifyRegister" />
     <Button
-        android:text="Ingresar Cargas"
+        android:text="Publicar Carga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnLUAInsertCargo" />
+        android:id="@+id/btnLUAPublishCargo" />
     <Button
-        android:text="Ver Cargas"
+        android:text="Publicar Viaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnLUASeeCargo" />
+        android:id="@+id/btnLUAPublishTravel" />
+    <Button
+        android:text="Historial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLUAHistorical" />
     <Button
         android:text="Volver"
         android:layout_width="match_parent"

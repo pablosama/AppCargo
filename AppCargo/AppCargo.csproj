@@ -80,10 +80,10 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\LoginUser.axml">
+    <AndroidResource Include="Resources\layout\PreSelectionRegister.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\PreSelectionRegister.axml">
+    <AndroidResource Include="Resources\layout\LoginUser.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

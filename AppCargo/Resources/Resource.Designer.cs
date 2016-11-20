@@ -71,92 +71,95 @@ namespace AppCargo
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050002
-			public const int btnLUAInsertCargo = 2131034114;
+			// aapt resource value: 0x7f050004
+			public const int btnLUAHistorical = 2131034116;
 			
 			// aapt resource value: 0x7f050001
 			public const int btnLUAModifyRegister = 2131034113;
 			
-			// aapt resource value: 0x7f050004
-			public const int btnLUAReturn = 2131034116;
+			// aapt resource value: 0x7f050002
+			public const int btnLUAPublishCargo = 2131034114;
 			
 			// aapt resource value: 0x7f050003
-			public const int btnLUASeeCargo = 2131034115;
+			public const int btnLUAPublishTravel = 2131034115;
 			
-			// aapt resource value: 0x7f050010
-			public const int btnMLogin = 2131034128;
+			// aapt resource value: 0x7f050005
+			public const int btnLUAReturn = 2131034117;
 			
 			// aapt resource value: 0x7f050011
-			public const int btnMLogout = 2131034129;
+			public const int btnMLogin = 2131034129;
 			
-			// aapt resource value: 0x7f050019
-			public const int btnPSRCarrier = 2131034137;
-			
-			// aapt resource value: 0x7f05001b
-			public const int btnPSRIngresar = 2131034139;
-			
-			// aapt resource value: 0x7f05001c
-			public const int btnPSRReturn = 2131034140;
-			
-			// aapt resource value: 0x7f050018
-			public const int btnPSRUser = 2131034136;
-			
-			// aapt resource value: 0x7f05000b
-			public const int chkMRecord = 2131034123;
-			
-			// aapt resource value: 0x7f050006
-			public const int imgMView1 = 2131034118;
-			
-			// aapt resource value: 0x7f050009
-			public const int lblMPass = 2131034121;
-			
-			// aapt resource value: 0x7f05000e
-			public const int lblMRegister = 2131034126;
-			
-			// aapt resource value: 0x7f050007
-			public const int lblMUser = 2131034119;
-			
-			// aapt resource value: 0x7f050013
-			public const int lblPSRRegister = 2131034131;
+			// aapt resource value: 0x7f050012
+			public const int btnMLogout = 2131034130;
 			
 			// aapt resource value: 0x7f05001a
-			public const int lblPSRSelectUserMsg = 2131034138;
+			public const int btnPSRCarrier = 2131034138;
 			
-			// aapt resource value: 0x7f050015
-			public const int lblPSRtypeOfUser = 2131034133;
+			// aapt resource value: 0x7f05001c
+			public const int btnPSRIngresar = 2131034140;
 			
-			// aapt resource value: 0x7f050017
-			public const int linearLayout1 = 2131034135;
+			// aapt resource value: 0x7f05001d
+			public const int btnPSRReturn = 2131034141;
 			
-			// aapt resource value: 0x7f050014
-			public const int psrSpc2 = 2131034132;
-			
-			// aapt resource value: 0x7f050016
-			public const int spcPSR3 = 2131034134;
+			// aapt resource value: 0x7f050019
+			public const int btnPSRUser = 2131034137;
 			
 			// aapt resource value: 0x7f05000c
-			public const int tblMLayout1 = 2131034124;
+			public const int chkMRecord = 2131034124;
+			
+			// aapt resource value: 0x7f050007
+			public const int imgMView1 = 2131034119;
+			
+			// aapt resource value: 0x7f05000a
+			public const int lblMPass = 2131034122;
+			
+			// aapt resource value: 0x7f05000f
+			public const int lblMRegister = 2131034127;
+			
+			// aapt resource value: 0x7f050008
+			public const int lblMUser = 2131034120;
+			
+			// aapt resource value: 0x7f050014
+			public const int lblPSRRegister = 2131034132;
+			
+			// aapt resource value: 0x7f05001b
+			public const int lblPSRSelectUserMsg = 2131034139;
+			
+			// aapt resource value: 0x7f050016
+			public const int lblPSRtypeOfUser = 2131034134;
+			
+			// aapt resource value: 0x7f050018
+			public const int linearLayout1 = 2131034136;
+			
+			// aapt resource value: 0x7f050015
+			public const int psrSpc2 = 2131034133;
+			
+			// aapt resource value: 0x7f050017
+			public const int spcPSR3 = 2131034135;
 			
 			// aapt resource value: 0x7f05000d
-			public const int tblMRow1 = 2131034125;
+			public const int tblMLayout1 = 2131034125;
+			
+			// aapt resource value: 0x7f05000e
+			public const int tblMRow1 = 2131034126;
 			
 			// aapt resource value: 0x7f050000
 			public const int txtLUAWelcomeUser = 2131034112;
 			
-			// aapt resource value: 0x7f05000a
-			public const int txtMPassword = 2131034122;
+			// aapt resource value: 0x7f05000b
+			public const int txtMPassword = 2131034123;
 			
-			// aapt resource value: 0x7f05000f
-			public const int txtMReset = 2131034127;
+			// aapt resource value: 0x7f050010
+			public const int txtMReset = 2131034128;
 			
-			// aapt resource value: 0x7f050008
-			public const int txtMUserName = 2131034120;
+			// aapt resource value: 0x7f050009
+			public const int txtMUserName = 2131034121;
 			
-			// aapt resource value: 0x7f050005
-			public const int txtMWelcomeUser = 2131034117;
+			// aapt resource value: 0x7f050006
+			public const int txtMWelcomeUser = 2131034118;
 			
-			// aapt resource value: 0x7f050012
-			public const int txtPSRWelcomeUser = 2131034130;
+			// aapt resource value: 0x7f050013
+			public const int txtPSRWelcomeUser = 2131034131;
 			
 			static Id()
 			{
