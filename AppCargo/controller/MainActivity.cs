@@ -51,6 +51,9 @@ namespace AppCargo
         private void BtnLogout_Click(object sender, EventArgs e)
         {
             this.FinishAffinity();
+
+            //test.GetDataAsync(1, true);
+            //test.GetDataCompleted += Test_GetDataCompleted;
         }
 
         //modal for upload/download data

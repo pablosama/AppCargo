@@ -53,7 +53,9 @@ namespace AppCargo.controller
 
         private void BtnHistorial_Click(object sender, EventArgs e)
         {
-           
+            //todo: add userType
+            Intent nextScreen = new Intent(this, typeof(MainHistoricalActivity));
+            StartActivity(nextScreen);
         }
 
         private void BtnPublicarViaje_Click(object sender, EventArgs e)
