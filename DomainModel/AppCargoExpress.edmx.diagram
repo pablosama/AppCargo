@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac113233c6634475a2658d675e65b02b" Name="Diagram1">
+        <EntityTypeShape EntityType="AppCargoExpressModel.ciudades" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCargoExpressModel.escalas" Width="1.5" PointX="12" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCargoExpressModel.itinerarios" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCargoExpressModel.provincias" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCargoExpressModel.regiones" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCargoExpressModel.transacciones" Width="1.5" PointX="14.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCargoExpressModel.usuarios" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCargoExpressModel.valoraciones" Width="1.5" PointX="16.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppCargoExpressModel.transporte" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_ciudades_provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_escalas_ciudades" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_usuarios_ciudades" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_escalas_itinerarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_transacciones_escalas" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_itinerarios_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_provincias_regiones" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_transacciones_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_valoraciones_transacciones" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_transporte_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="AppCargoExpressModel.FK_valoraciones_usuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

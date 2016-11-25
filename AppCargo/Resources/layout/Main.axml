@@ -83,7 +83,7 @@
                 android:textColor="#0000FF"
                 android:layout_marginLeft="30dp"
                 android:onClick="RegisterOnClick"
-                android:clickable="true"/>
+                android:clickable="true" />
             <TextView
                 android:text="Recordar Clave"
                 android:textAppearance="?android:attr/textAppearanceMedium"

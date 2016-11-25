@@ -45,7 +45,7 @@ namespace AppCargo
             var txtLogin = FindViewById<EditText>(Resource.Id.txtMUserName);
             var txtPass = FindViewById<EditText>(Resource.Id.txtMPassword);
             DisplayProgressLoading(txtLogin.Text, txtPass.Text);
-
+            
         }
 
         private void BtnLogout_Click(object sender, EventArgs e)

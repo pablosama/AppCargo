@@ -104,17 +104,17 @@ namespace AppCargo
 			// aapt resource value: 0x7f050017
 			public const int btnMhSeeRank = 2131034135;
 			
-			// aapt resource value: 0x7f050024
-			public const int btnPSRCarrier = 2131034148;
-			
-			// aapt resource value: 0x7f050026
-			public const int btnPSRIngresar = 2131034150;
+			// aapt resource value: 0x7f050025
+			public const int btnPSRCarrier = 2131034149;
 			
 			// aapt resource value: 0x7f050027
-			public const int btnPSRReturn = 2131034151;
+			public const int btnPSRIngresar = 2131034151;
 			
-			// aapt resource value: 0x7f050023
-			public const int btnPSRUser = 2131034147;
+			// aapt resource value: 0x7f050028
+			public const int btnPSRReturn = 2131034152;
+			
+			// aapt resource value: 0x7f050024
+			public const int btnPSRUser = 2131034148;
 			
 			// aapt resource value: 0x7f05000d
 			public const int chkMRecord = 2131034125;
@@ -134,38 +134,41 @@ namespace AppCargo
 			// aapt resource value: 0x7f050014
 			public const int lblMhMainTitle = 2131034132;
 			
-			// aapt resource value: 0x7f05001e
-			public const int lblPSRRegister = 2131034142;
+			// aapt resource value: 0x7f05001f
+			public const int lblPSRRegister = 2131034143;
 			
-			// aapt resource value: 0x7f050025
-			public const int lblPSRSelectUserMsg = 2131034149;
+			// aapt resource value: 0x7f050026
+			public const int lblPSRSelectUserMsg = 2131034150;
 			
-			// aapt resource value: 0x7f050020
-			public const int lblPSRtypeOfUser = 2131034144;
-			
-			// aapt resource value: 0x7f05001b
-			public const int lblPcDateList = 2131034139;
+			// aapt resource value: 0x7f050021
+			public const int lblPSRtypeOfUser = 2131034145;
 			
 			// aapt resource value: 0x7f05001a
-			public const int lblPcNumOperation = 2131034138;
-			
-			// aapt resource value: 0x7f05001c
-			public const int lblPcOriginDestiny = 2131034140;
+			public const int lblPcDateList = 2131034138;
 			
 			// aapt resource value: 0x7f050019
-			public const int lblPcTitleList = 2131034137;
+			public const int lblPcNumOperation = 2131034137;
 			
-			// aapt resource value: 0x7f050022
-			public const int linearLayout1 = 2131034146;
+			// aapt resource value: 0x7f05001b
+			public const int lblPcOriginDestiny = 2131034139;
+			
+			// aapt resource value: 0x7f05001c
+			public const int lblPcTitleList = 2131034140;
+			
+			// aapt resource value: 0x7f050023
+			public const int linearLayout1 = 2131034147;
 			
 			// aapt resource value: 0x7f050000
 			public const int lstAc = 2131034112;
 			
-			// aapt resource value: 0x7f05001f
-			public const int psrSpc2 = 2131034143;
+			// aapt resource value: 0x7f05001d
+			public const int lstPcPerformed = 2131034141;
 			
-			// aapt resource value: 0x7f050021
-			public const int spcPSR3 = 2131034145;
+			// aapt resource value: 0x7f050020
+			public const int psrSpc2 = 2131034144;
+			
+			// aapt resource value: 0x7f050022
+			public const int spcPSR3 = 2131034146;
 			
 			// aapt resource value: 0x7f05000e
 			public const int tblMLayout1 = 2131034126;
@@ -188,8 +191,8 @@ namespace AppCargo
 			// aapt resource value: 0x7f050007
 			public const int txtMWelcomeUser = 2131034119;
 			
-			// aapt resource value: 0x7f05001d
-			public const int txtPSRWelcomeUser = 2131034141;
+			// aapt resource value: 0x7f05001e
+			public const int txtPSRWelcomeUser = 2131034142;
 			
 			static Id()
 			{
@@ -220,7 +223,10 @@ namespace AppCargo
 			public const int PerformedCargoes = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int PreSelectionRegister = 2130903045;
+			public const int PerformedCargoesMain = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int PreSelectionRegister = 2130903046;
 			
 			static Layout()
 			{

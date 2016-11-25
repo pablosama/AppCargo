@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AppCargoExpressModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ciudades">
+          <Key>
+            <PropertyRef Name="id_ciudad" />
+          </Key>
+          <Property Name="id_ciudad" Type="int" Nullable="false" />
+          <Property Name="id_provincia" Type="int" Nullable="false" />
+          <Property Name="nombre_ciudad" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="escalas">
+          <Key>
+            <PropertyRef Name="id_escala" />
+          </Key>
+          <Property Name="id_escala" Type="int" Nullable="false" />
+          <Property Name="id_itinerario" Type="int" Nullable="false" />
+          <Property Name="ciudad_inicio" Type="int" Nullable="false" />
+          <Property Name="ciudad_fin" Type="int" Nullable="false" />
+          <Property Name="fecha_salida" Type="datetime" Nullable="false" />
+          <Property Name="fecha_llegada" Type="datetime" Nullable="false" />
+          <Property Name="cancelada" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="itinerarios">
+          <Key>
+            <PropertyRef Name="id_itinerario" />
+          </Key>
+          <Property Name="id_itinerario" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="fecha_creacion" Type="datetime" Nullable="false" />
+          <Property Name="fecha_actualizacion" Type="datetime" Nullable="false" />
+          <Property Name="id_camion" Type="int" Nullable="false" />
+          <Property Name="tipo_viaje" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="cancelado" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="provincias">
+          <Key>
+            <PropertyRef Name="id_provincia" />
+          </Key>
+          <Property Name="id_provincia" Type="int" Nullable="false" />
+          <Property Name="id_region" Type="int" Nullable="false" />
+          <Property Name="nombre_provincia" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="regiones">
+          <Key>
+            <PropertyRef Name="id_region" />
+          </Key>
+          <Property Name="id_region" Type="int" Nullable="false" />
+          <Property Name="nombre_region" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="transacciones">
+          <Key>
+            <PropertyRef Name="id_transaccion" />
+          </Key>
+          <Property Name="id_transaccion" Type="int" Nullable="false" />
+          <Property Name="id_itinerario" Type="int" Nullable="false" />
+          <Property Name="id_escala" Type="int" Nullable="false" />
+          <Property Name="id_usuario_solicita" Type="int" Nullable="false" />
+          <Property Name="id_usuario_oferta" Type="int" Nullable="false" />
+          <Property Name="fecha_transaccion" Type="datetime" Nullable="false" />
+          <Property Name="observaciones" Type="varchar(max)" Nullable="false" />
+          <Property Name="valor" Type="decimal" Precision="15" Scale="3" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="id_valoracion" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AppCargoExpress.dbo.transporte' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="transporte">
+          <Key>
+            <PropertyRef Name="id_transporte" />
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="marca" />
+            <PropertyRef Name="modelo" />
+            <PropertyRef Name="tipo_transporte" />
+            <PropertyRef Name="capacidad" />
+            <PropertyRef Name="estado" />
+          </Key>
+          <Property Name="id_transporte" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="modelo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="anio" Type="varchar" MaxLength="4" />
+          <Property Name="color" Type="varchar" MaxLength="6" />
+          <Property Name="matricula" Type="varchar" MaxLength="6" />
+          <Property Name="tipo_transporte" Type="int" Nullable="false" />
+          <Property Name="capacidad" Type="decimal" Precision="15" Scale="3" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alias" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipo_usuario" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="telefono_movil" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="codigo_area" Type="varchar" MaxLength="3" />
+          <Property Name="telefono_fijo" Type="varchar" MaxLength="8" />
+          <Property Name="mail" Type="varchar(max)" Nullable="false" />
+          <Property Name="id_comuna" Type="int" Nullable="false" />
+          <Property Name="direccion" Type="varchar(max)" />
+          <Property Name="fecha_creacion" Type="date" Nullable="false" />
+          <Property Name="fecha_actualizacion" Type="date" Nullable="false" />
+          <Property Name="estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="valoraciones">
+          <Key>
+            <PropertyRef Name="id_valoracion" />
+          </Key>
+          <Property Name="id_valoracion" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_transacion" Type="int" Nullable="false" />
+          <Property Name="valoracion" Type="int" Nullable="false" />
+          <Property Name="fecha_valoracion" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ciudades_provincias">
+          <End Role="provincias" Type="Self.provincias" Multiplicity="1" />
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincias">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="ciudades">
+              <PropertyRef Name="id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_escalas_ciudades">
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="1" />
+          <End Role="escalas" Type="Self.escalas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudades">
+              <PropertyRef Name="id_ciudad" />
+            </Principal>
+            <Dependent Role="escalas">
+              <PropertyRef Name="ciudad_inicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_escalas_itinerarios">
+          <End Role="itinerarios" Type="Self.itinerarios" Multiplicity="1" />
+          <End Role="escalas" Type="Self.escalas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="itinerarios">
+              <PropertyRef Name="id_itinerario" />
+            </Principal>
+            <Dependent Role="escalas">
+              <PropertyRef Name="id_itinerario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_itinerarios_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="itinerarios" Type="Self.itinerarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="itinerarios">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_provincias_regiones">
+          <End Role="regiones" Type="Self.regiones" Multiplicity="1" />
+          <End Role="provincias" Type="Self.provincias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="regiones">
+              <PropertyRef Name="id_region" />
+            </Principal>
+            <Dependent Role="provincias">
+              <PropertyRef Name="id_region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transacciones_escalas">
+          <End Role="escalas" Type="Self.escalas" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="escalas">
+              <PropertyRef Name="id_escala" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_escala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transacciones_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_usuario_solicita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transporte_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="transporte" Type="Self.transporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="transporte">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarios_ciudades">
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudades">
+              <PropertyRef Name="id_ciudad" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="id_comuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_valoraciones_transacciones">
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="1" />
+          <End Role="valoraciones" Type="Self.valoraciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transacciones">
+              <PropertyRef Name="id_transaccion" />
+            </Principal>
+            <Dependent Role="valoraciones">
+              <PropertyRef Name="id_transacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_valoraciones_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="valoraciones" Type="Self.valoraciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="valoraciones">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppCargoExpressModelStoreContainer">
+          <EntitySet Name="ciudades" EntityType="Self.ciudades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="escalas" EntityType="Self.escalas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="itinerarios" EntityType="Self.itinerarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provincias" EntityType="Self.provincias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="regiones" EntityType="Self.regiones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transacciones" EntityType="Self.transacciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="valoraciones" EntityType="Self.valoraciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transporte" EntityType="Self.transporte" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [transporte].[id_transporte] AS [id_transporte], 
+    [transporte].[id_usuario] AS [id_usuario], 
+    [transporte].[marca] AS [marca], 
+    [transporte].[modelo] AS [modelo], 
+    [transporte].[anio] AS [anio], 
+    [transporte].[color] AS [color], 
+    [transporte].[matricula] AS [matricula], 
+    [transporte].[tipo_transporte] AS [tipo_transporte], 
+    [transporte].[capacidad] AS [capacidad], 
+    [transporte].[estado] AS [estado]
+    FROM [dbo].[transporte] AS [transporte]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ciudades_provincias" Association="Self.FK_ciudades_provincias">
+            <End Role="provincias" EntitySet="provincias" />
+            <End Role="ciudades" EntitySet="ciudades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_escalas_ciudades" Association="Self.FK_escalas_ciudades">
+            <End Role="ciudades" EntitySet="ciudades" />
+            <End Role="escalas" EntitySet="escalas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_escalas_itinerarios" Association="Self.FK_escalas_itinerarios">
+            <End Role="itinerarios" EntitySet="itinerarios" />
+            <End Role="escalas" EntitySet="escalas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_itinerarios_usuarios" Association="Self.FK_itinerarios_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="itinerarios" EntitySet="itinerarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_provincias_regiones" Association="Self.FK_provincias_regiones">
+            <End Role="regiones" EntitySet="regiones" />
+            <End Role="provincias" EntitySet="provincias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transacciones_escalas" Association="Self.FK_transacciones_escalas">
+            <End Role="escalas" EntitySet="escalas" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transacciones_usuarios" Association="Self.FK_transacciones_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transporte_usuarios" Association="Self.FK_transporte_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="transporte" EntitySet="transporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_ciudades" Association="Self.FK_usuarios_ciudades">
+            <End Role="ciudades" EntitySet="ciudades" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_valoraciones_transacciones" Association="Self.FK_valoraciones_transacciones">
+            <End Role="transacciones" EntitySet="transacciones" />
+            <End Role="valoraciones" EntitySet="valoraciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_valoraciones_usuarios" Association="Self.FK_valoraciones_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="valoraciones" EntitySet="valoraciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppCargoExpressModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ciudades">
+          <Key>
+            <PropertyRef Name="id_ciudad" />
+          </Key>
+          <Property Name="id_ciudad" Type="Int32" Nullable="false" />
+          <Property Name="id_provincia" Type="Int32" Nullable="false" />
+          <Property Name="nombre_ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="provincias" Relationship="Self.FK_ciudades_provincias" FromRole="ciudades" ToRole="provincias" />
+          <NavigationProperty Name="escalas" Relationship="Self.FK_escalas_ciudades" FromRole="ciudades" ToRole="escalas" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_usuarios_ciudades" FromRole="ciudades" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="escalas">
+          <Key>
+            <PropertyRef Name="id_escala" />
+          </Key>
+          <Property Name="id_escala" Type="Int32" Nullable="false" />
+          <Property Name="id_itinerario" Type="Int32" Nullable="false" />
+          <Property Name="ciudad_inicio" Type="Int32" Nullable="false" />
+          <Property Name="ciudad_fin" Type="Int32" Nullable="false" />
+          <Property Name="fecha_salida" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_llegada" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cancelada" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ciudades" Relationship="Self.FK_escalas_ciudades" FromRole="escalas" ToRole="ciudades" />
+          <NavigationProperty Name="itinerarios" Relationship="Self.FK_escalas_itinerarios" FromRole="escalas" ToRole="itinerarios" />
+          <NavigationProperty Name="transacciones" Relationship="Self.FK_transacciones_escalas" FromRole="escalas" ToRole="transacciones" />
+        </EntityType>
+        <EntityType Name="itinerarios">
+          <Key>
+            <PropertyRef Name="id_itinerario" />
+          </Key>
+          <Property Name="id_itinerario" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fecha_actualizacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_camion" Type="Int32" Nullable="false" />
+          <Property Name="tipo_viaje" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cancelado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="escalas" Relationship="Self.FK_escalas_itinerarios" FromRole="itinerarios" ToRole="escalas" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_itinerarios_usuarios" FromRole="itinerarios" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="provincias">
+          <Key>
+            <PropertyRef Name="id_provincia" />
+          </Key>
+          <Property Name="id_provincia" Type="Int32" Nullable="false" />
+          <Property Name="id_region" Type="Int32" Nullable="false" />
+          <Property Name="nombre_provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ciudades" Relationship="Self.FK_ciudades_provincias" FromRole="provincias" ToRole="ciudades" />
+          <NavigationProperty Name="regiones" Relationship="Self.FK_provincias_regiones" FromRole="provincias" ToRole="regiones" />
+        </EntityType>
+        <EntityType Name="regiones">
+          <Key>
+            <PropertyRef Name="id_region" />
+          </Key>
+          <Property Name="id_region" Type="Int32" Nullable="false" />
+          <Property Name="nombre_region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="provincias" Relationship="Self.FK_provincias_regiones" FromRole="regiones" ToRole="provincias" />
+        </EntityType>
+        <EntityType Name="transacciones">
+          <Key>
+            <PropertyRef Name="id_transaccion" />
+          </Key>
+          <Property Name="id_transaccion" Type="Int32" Nullable="false" />
+          <Property Name="id_itinerario" Type="Int32" Nullable="false" />
+          <Property Name="id_escala" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario_solicita" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario_oferta" Type="Int32" Nullable="false" />
+          <Property Name="fecha_transaccion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="15" Scale="3" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_valoracion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="escalas" Relationship="Self.FK_transacciones_escalas" FromRole="transacciones" ToRole="escalas" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_transacciones_usuarios" FromRole="transacciones" ToRole="usuarios" />
+          <NavigationProperty Name="valoraciones" Relationship="Self.FK_valoraciones_transacciones" FromRole="transacciones" ToRole="valoraciones" />
+        </EntityType>
+        <EntityType Name="usuarios">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tipo_usuario" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono_movil" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codigo_area" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="telefono_fijo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_comuna" Type="Int32" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_actualizacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ciudades" Relationship="Self.FK_usuarios_ciudades" FromRole="usuarios" ToRole="ciudades" />
+          <NavigationProperty Name="itinerarios" Relationship="Self.FK_itinerarios_usuarios" FromRole="usuarios" ToRole="itinerarios" />
+          <NavigationProperty Name="transacciones" Relationship="Self.FK_transacciones_usuarios" FromRole="usuarios" ToRole="transacciones" />
+          <NavigationProperty Name="transporte" Relationship="Self.FK_transporte_usuarios" FromRole="usuarios" ToRole="transporte" />
+          <NavigationProperty Name="valoraciones" Relationship="Self.FK_valoraciones_usuarios" FromRole="usuarios" ToRole="valoraciones" />
+        </EntityType>
+        <EntityType Name="valoraciones">
+          <Key>
+            <PropertyRef Name="id_valoracion" />
+          </Key>
+          <Property Name="id_valoracion" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="id_transacion" Type="Int32" Nullable="false" />
+          <Property Name="valoracion" Type="Int32" Nullable="false" />
+          <Property Name="fecha_valoracion" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="transacciones" Relationship="Self.FK_valoraciones_transacciones" FromRole="valoraciones" ToRole="transacciones" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_valoraciones_usuarios" FromRole="valoraciones" ToRole="usuarios" />
+        </EntityType>
+        <EntityType Name="transporte">
+          <Key>
+            <PropertyRef Name="id_transporte" />
+            <PropertyRef Name="id_usuario" />
+            <PropertyRef Name="marca" />
+            <PropertyRef Name="modelo" />
+            <PropertyRef Name="tipo_transporte" />
+            <PropertyRef Name="capacidad" />
+            <PropertyRef Name="estado" />
+          </Key>
+          <Property Name="id_transporte" Type="Int32" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="modelo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="anio" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="color" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="matricula" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_transporte" Type="Int32" Nullable="false" />
+          <Property Name="capacidad" Type="Decimal" Precision="15" Scale="3" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="usuarios" Relationship="Self.FK_transporte_usuarios" FromRole="transporte" ToRole="usuarios" />
+        </EntityType>
+        <Association Name="FK_ciudades_provincias">
+          <End Role="provincias" Type="Self.provincias" Multiplicity="1" />
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincias">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="ciudades">
+              <PropertyRef Name="id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_escalas_ciudades">
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="1" />
+          <End Role="escalas" Type="Self.escalas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudades">
+              <PropertyRef Name="id_ciudad" />
+            </Principal>
+            <Dependent Role="escalas">
+              <PropertyRef Name="ciudad_inicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usuarios_ciudades">
+          <End Role="ciudades" Type="Self.ciudades" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudades">
+              <PropertyRef Name="id_ciudad" />
+            </Principal>
+            <Dependent Role="usuarios">
+              <PropertyRef Name="id_comuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_escalas_itinerarios">
+          <End Role="itinerarios" Type="Self.itinerarios" Multiplicity="1" />
+          <End Role="escalas" Type="Self.escalas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="itinerarios">
+              <PropertyRef Name="id_itinerario" />
+            </Principal>
+            <Dependent Role="escalas">
+              <PropertyRef Name="id_itinerario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transacciones_escalas">
+          <End Role="escalas" Type="Self.escalas" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="escalas">
+              <PropertyRef Name="id_escala" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_escala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_itinerarios_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="itinerarios" Type="Self.itinerarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="itinerarios">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_provincias_regiones">
+          <End Role="regiones" Type="Self.regiones" Multiplicity="1" />
+          <End Role="provincias" Type="Self.provincias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="regiones">
+              <PropertyRef Name="id_region" />
+            </Principal>
+            <Dependent Role="provincias">
+              <PropertyRef Name="id_region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transacciones_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="transacciones">
+              <PropertyRef Name="id_usuario_solicita" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_valoraciones_transacciones">
+          <End Role="transacciones" Type="Self.transacciones" Multiplicity="1" />
+          <End Role="valoraciones" Type="Self.valoraciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transacciones">
+              <PropertyRef Name="id_transaccion" />
+            </Principal>
+            <Dependent Role="valoraciones">
+              <PropertyRef Name="id_transacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_transporte_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="transporte" Type="Self.transporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="transporte">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_valoraciones_usuarios">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="valoraciones" Type="Self.valoraciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="valoraciones">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppCargoExpressEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ciudades" EntityType="Self.ciudades" />
+          <EntitySet Name="escalas" EntityType="Self.escalas" />
+          <EntitySet Name="itinerarios" EntityType="Self.itinerarios" />
+          <EntitySet Name="provincias" EntityType="Self.provincias" />
+          <EntitySet Name="regiones" EntityType="Self.regiones" />
+          <EntitySet Name="transacciones" EntityType="Self.transacciones" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+          <EntitySet Name="valoraciones" EntityType="Self.valoraciones" />
+          <EntitySet Name="transporte" EntityType="Self.transporte" />
+          <AssociationSet Name="FK_ciudades_provincias" Association="Self.FK_ciudades_provincias">
+            <End Role="provincias" EntitySet="provincias" />
+            <End Role="ciudades" EntitySet="ciudades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_escalas_ciudades" Association="Self.FK_escalas_ciudades">
+            <End Role="ciudades" EntitySet="ciudades" />
+            <End Role="escalas" EntitySet="escalas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usuarios_ciudades" Association="Self.FK_usuarios_ciudades">
+            <End Role="ciudades" EntitySet="ciudades" />
+            <End Role="usuarios" EntitySet="usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_escalas_itinerarios" Association="Self.FK_escalas_itinerarios">
+            <End Role="itinerarios" EntitySet="itinerarios" />
+            <End Role="escalas" EntitySet="escalas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transacciones_escalas" Association="Self.FK_transacciones_escalas">
+            <End Role="escalas" EntitySet="escalas" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_itinerarios_usuarios" Association="Self.FK_itinerarios_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="itinerarios" EntitySet="itinerarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_provincias_regiones" Association="Self.FK_provincias_regiones">
+            <End Role="regiones" EntitySet="regiones" />
+            <End Role="provincias" EntitySet="provincias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transacciones_usuarios" Association="Self.FK_transacciones_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="transacciones" EntitySet="transacciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_valoraciones_transacciones" Association="Self.FK_valoraciones_transacciones">
+            <End Role="transacciones" EntitySet="transacciones" />
+            <End Role="valoraciones" EntitySet="valoraciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_transporte_usuarios" Association="Self.FK_transporte_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="transporte" EntitySet="transporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_valoraciones_usuarios" Association="Self.FK_valoraciones_usuarios">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="valoraciones" EntitySet="valoraciones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppCargoExpressModelStoreContainer" CdmEntityContainer="AppCargoExpressEntities">
+          <EntitySetMapping Name="ciudades">
+            <EntityTypeMapping TypeName="AppCargoExpressModel.ciudades">
+              <MappingFragment StoreEntitySet="ciudades">
+                <ScalarProperty Name="id_ciudad" ColumnName="id_ciudad" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="nombre_ciudad" ColumnName="nombre_ciudad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="escalas">
+            <EntityTypeMapping TypeName="AppCargoExpressModel.escalas">
+              <MappingFragment StoreEntitySet="escalas">
+                <ScalarProperty Name="id_escala" ColumnName="id_escala" />
+                <ScalarProperty Name="id_itinerario" ColumnName="id_itinerario" />
+                <ScalarProperty Name="ciudad_inicio" ColumnName="ciudad_inicio" />
+                <ScalarProperty Name="ciudad_fin" ColumnName="ciudad_fin" />
+                <ScalarProperty Name="fecha_salida" ColumnName="fecha_salida" />
+                <ScalarProperty Name="fecha_llegada" ColumnName="fecha_llegada" />
+                <ScalarProperty Name="cancelada" ColumnName="cancelada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="itinerarios">
+            <EntityTypeMapping TypeName="AppCargoExpressModel.itinerarios">
+              <MappingFragment StoreEntitySet="itinerarios">
+                <ScalarProperty Name="id_itinerario" ColumnName="id_itinerario" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+                <ScalarProperty Name="id_camion" ColumnName="id_camion" />
+                <ScalarProperty Name="tipo_viaje" ColumnName="tipo_viaje" />
+                <ScalarProperty Name="cancelado" ColumnName="cancelado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincias">
+            <EntityTypeMapping TypeName="AppCargoExpressModel.provincias">
+              <MappingFragment StoreEntitySet="provincias">
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="id_region" ColumnName="id_region" />
+                <ScalarProperty Name="nombre_provincia" ColumnName="nombre_provincia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="regiones">
+            <EntityTypeMapping TypeName="AppCargoExpressModel.regiones">
+              <MappingFragment StoreEntitySet="regiones">
+                <ScalarProperty Name="id_region" ColumnName="id_region" />
+                <ScalarProperty Name="nombre_region" ColumnName="nombre_region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transacciones">
+            <EntityTypeMapping TypeName="AppCargoExpressModel.transacciones">
+              <MappingFragment StoreEntitySet="transacciones">
+                <ScalarProperty Name="id_transaccion" ColumnName="id_transaccion" />
+                <ScalarProperty Name="id_itinerario" ColumnName="id_itinerario" />
+                <ScalarProperty Name="id_escala" ColumnName="id_escala" />
+                <ScalarProperty Name="id_usuario_solicita" ColumnName="id_usuario_solicita" />
+                <ScalarProperty Name="id_usuario_oferta" ColumnName="id_usuario_oferta" />
+                <ScalarProperty Name="fecha_transaccion" ColumnName="fecha_transaccion" />
+                <ScalarProperty Name="observaciones" ColumnName="observaciones" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_valoracion" ColumnName="id_valoracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="AppCargoExpressModel.usuarios">
+              <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+                <ScalarProperty Name="telefono_movil" ColumnName="telefono_movil" />
+                <ScalarProperty Name="codigo_area" ColumnName="codigo_area" />
+                <ScalarProperty Name="telefono_fijo" ColumnName="telefono_fijo" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="id_comuna" ColumnName="id_comuna" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="fecha_actualizacion" ColumnName="fecha_actualizacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="valoraciones">
+            <EntityTypeMapping TypeName="AppCargoExpressModel.valoraciones">
+              <MappingFragment StoreEntitySet="valoraciones">
+                <ScalarProperty Name="id_valoracion" ColumnName="id_valoracion" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_transacion" ColumnName="id_transacion" />
+                <ScalarProperty Name="valoracion" ColumnName="valoracion" />
+                <ScalarProperty Name="fecha_valoracion" ColumnName="fecha_valoracion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transporte">
+            <EntityTypeMapping TypeName="AppCargoExpressModel.transporte">
+              <MappingFragment StoreEntitySet="transporte">
+                <ScalarProperty Name="id_transporte" ColumnName="id_transporte" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="modelo" ColumnName="modelo" />
+                <ScalarProperty Name="anio" ColumnName="anio" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="tipo_transporte" ColumnName="tipo_transporte" />
+                <ScalarProperty Name="capacidad" ColumnName="capacidad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

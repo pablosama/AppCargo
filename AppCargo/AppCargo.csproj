@@ -77,6 +77,7 @@
     <Compile Include="controller\LoginUserActivity.cs" />
     <Compile Include="controller\MainActivity.cs" />
     <Compile Include="controller\MainHistoricalActivity.cs" />
+    <Compile Include="controller\PerformedCargoesAdapter.cs" />
     <Compile Include="controller\PreSelectRegisterActivity.cs" />
     <Compile Include="models\PerformedCagoes.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -100,6 +101,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AwardedCargoes.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\PerformedCargoesMain.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -133,7 +137,12 @@
   <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
+      <Project>{9f9c8f72-b8b4-4b97-897a-d4f6ec44d672}</Project>
+      <Name>DomainModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.
